@@ -22,6 +22,7 @@ import static org.springframework.data.solr.core.schema.SchemaDefinition.FieldDe
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;

@@ -49,6 +49,11 @@ public class SolrJsonRequest extends SolrRequest<SolrJsonResponse> {
 		setContentParser(new MappingJacksonRequestContentParser());
 	}
 
+	@Override
+	public String getRequestType() {
+		throw new UnsupportedOperationException();
+	}
+
 	private void setContentParser(@Nullable ContentParser requestParser) {
 		this.contentParser = requestParser != null ? requestParser : new MappingJacksonRequestContentParser();
 	}

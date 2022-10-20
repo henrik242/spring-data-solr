@@ -425,7 +425,7 @@
                       to occupy. Note that when this option is specified, the size
                       and initialSize parameters are ignored.
       -->
-    <filterCache class="solr.FastLRUCache"
+    <filterCache class="solr.search.CaffeineCache"
                  size="512"
                  initialSize="512"
                  autowarmCount="0"/>
@@ -438,7 +438,7 @@
            maxRamMB - the maximum amount of RAM (in MB) that this cache is allowed
                       to occupy
      -->
-    <queryResultCache class="solr.LRUCache"
+    <queryResultCache class="solr.search.CaffeineCache"
                      size="512"
                      initialSize="512"
                      autowarmCount="0"/>
@@ -449,14 +449,14 @@
          document).  Since Lucene internal document ids are transient,
          this cache will not be autowarmed.
       -->
-    <documentCache class="solr.LRUCache"
+    <documentCache class="solr.search.CaffeineCache"
                    size="512"
                    initialSize="512"
                    autowarmCount="0"/>
 
     <!-- custom cache currently used by block join -->
     <cache name="perSegFilter"
-      class="solr.search.LRUCache"
+      class="solr.search.CaffeineCache"
       size="10"
       initialSize="0"
       autowarmCount="10"
@@ -469,7 +469,7 @@
          even if not configured here.
       -->
     <!--
-       <fieldValueCache class="solr.FastLRUCache"
+       <fieldValueCache class="solr.search.CaffeineCache"
                         size="512"
                         autowarmCount="128"
                         showItems="32" />
@@ -486,7 +486,7 @@
          https://lucene.apache.org/solr/guide/learning-to-rank.html
       -->
     <cache enable="${solr.ltr.enabled:false}" name="QUERY_DOC_FV"
-           class="solr.search.LRUCache"
+           class="solr.search.CaffeineCache"
            size="4096"
            initialSize="2048"
            autowarmCount="4096"
@@ -503,7 +503,7 @@
       -->
     <!--
        <cache name="myUserCache"
-              class="solr.LRUCache"
+              class="solr.search.CaffeineCache"
               size="4096"
               initialSize="1024"
               autowarmCount="1024"
@@ -1542,7 +1542,7 @@
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
        every xsltCacheLifetimeSeconds.
     -->
-  <queryResponseWriter name="xslt" class="solr.XSLTResponseWriter">
+  <queryResponseWriter name="xslt" class="org.apache.solr.scripting.xslt.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
   </queryResponseWriter>
 
