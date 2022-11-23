@@ -16,10 +16,12 @@
 package org.springframework.data.solr;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.servlet.SolrDispatchFilter;
 import org.junit.ClassRule;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.solr.test.util.EmbeddedSolrServer.ClientCache;
@@ -28,6 +30,17 @@ import org.springframework.data.solr.test.util.EmbeddedSolrServer.ClientCache;
  * @author Christoph Strobl
  */
 public abstract class AbstractITestWithEmbeddedSolrServer {
+
+	static {
+		// Workaround for https://issues.apache.org/jira/browse/SOLR-16553
+		try {
+			if (System.getProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE) == null) {
+				System.setProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE, Files.createTempDirectory("foo").toFile().getAbsolutePath());
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	protected static final String COLLECTION_NAME = "collection1";
 	protected static final String DEFAULT_BEAN_ID = "1";

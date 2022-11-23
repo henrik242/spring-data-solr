@@ -23,6 +23,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.core.CoreContainer;
+import org.apache.solr.servlet.SolrDispatchFilter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.data.solr.server.SolrClientFactory;
@@ -60,7 +62,14 @@ public class EmbeddedSolrServerFactory implements SolrClientFactory, DisposableB
 	private ConcurrentHashMap<String, EmbeddedSolrServer> servers = new ConcurrentHashMap<>();
 
 	protected EmbeddedSolrServerFactory() {
-
+        // Workaround for https://issues.apache.org/jira/browse/SOLR-16553
+        try {
+            if (System.getProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE) == null) {
+                System.setProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE, Files.createTempDirectory("foo").toFile().getAbsolutePath());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 	}
 
 	/**
