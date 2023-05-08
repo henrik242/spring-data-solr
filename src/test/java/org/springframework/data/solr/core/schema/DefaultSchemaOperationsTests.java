@@ -38,15 +38,6 @@ import java.nio.file.Files;
 
 public class DefaultSchemaOperationsTests {
 
-	static {
-		// Workaround for https://issues.apache.org/jira/browse/SOLR-16553
-		try {
-			System.setProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE, Files.createTempDirectory("foo").toFile().getAbsolutePath());
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	static final String COLLECTION_NAME = "collection1";
 
 	public @Rule EmbeddedSolrServer resource = EmbeddedSolrServer.configure(new ClassPathResource("managed-schema"),

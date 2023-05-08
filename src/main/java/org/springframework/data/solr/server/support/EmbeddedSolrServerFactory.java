@@ -61,16 +61,7 @@ public class EmbeddedSolrServerFactory implements SolrClientFactory, DisposableB
 	private AtomicReference<CoreContainer> coreContainer = new AtomicReference<>(null);
 	private ConcurrentHashMap<String, EmbeddedSolrServer> servers = new ConcurrentHashMap<>();
 
-	protected EmbeddedSolrServerFactory() {
-        // Workaround for https://issues.apache.org/jira/browse/SOLR-16553
-        try {
-            if (System.getProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE) == null) {
-                System.setProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE, Files.createTempDirectory("foo").toFile().getAbsolutePath());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-	}
+	protected EmbeddedSolrServerFactory() {}
 
 	/**
 	 * @param solrHome Any Path expression valid for use with {@link ResourceUtils} that points to the

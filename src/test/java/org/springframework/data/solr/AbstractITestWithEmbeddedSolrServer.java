@@ -31,17 +31,6 @@ import org.springframework.data.solr.test.util.EmbeddedSolrServer.ClientCache;
  */
 public abstract class AbstractITestWithEmbeddedSolrServer {
 
-	static {
-		// Workaround for https://issues.apache.org/jira/browse/SOLR-16553
-		try {
-			if (System.getProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE) == null) {
-				System.setProperty(SolrDispatchFilter.SOLR_INSTALL_DIR_ATTRIBUTE, Files.createTempDirectory("foo").toFile().getAbsolutePath());
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	protected static final String COLLECTION_NAME = "collection1";
 	protected static final String DEFAULT_BEAN_ID = "1";
 

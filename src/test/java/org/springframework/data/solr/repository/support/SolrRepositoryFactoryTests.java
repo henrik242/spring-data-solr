@@ -95,11 +95,11 @@ public class SolrRepositoryFactoryTests {
 		Mockito.when(solrEntityMock.getType()).thenReturn(ProductBean.class);
 	}
 
-	interface ProductRepository extends Repository<ProductBean, String> {
+	public interface ProductRepository extends Repository<ProductBean, String> {
 
 	}
 
-	interface UnmanagedEntityRepository extends SolrCrudRepository<Object, String> {
+	public interface UnmanagedEntityRepository extends SolrCrudRepository<Object, String> {
 
 	}
 

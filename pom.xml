@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework.data</groupId>
 	<artifactId>spring-data-solr</artifactId>
-	<version>4.4.0-finn2</version>
+	<version>4.4.0-finn3</version>
 
 	<name>Spring Data Solr</name>
 	<description>Spring Data module providing support for Apache Solr repositories.</description>
@@ -21,7 +21,7 @@
 		<commons.collections>3.2.1</commons.collections>
 		<commons.lang>3.1</commons.lang>
 		<httpcomponents>4.3.1</httpcomponents>
-		<solr>9.1.0</solr>
+		<solr>9.2.1</solr>
 		<springdata.commons>2.5.8</springdata.commons> <!-- 2.5.9+ throws ClassNotFoundException: javax.sql.DataSource in the org.springframework.data.solr.repository tests -->
 		<java-module-name>spring.data.solr</java-module-name>
 	</properties>

@@ -80,7 +80,7 @@ public class EnableSolrRepositoriesWithPredefinedConvertersUnitTests extends Abs
 						.isSameAs(CUSTOM_CONVERSIONS);
 	}
 
-	interface ProductRepository extends CrudRepository<ProductBean, String> {
+	public interface ProductRepository extends CrudRepository<ProductBean, String> {
 
 	}
 }
