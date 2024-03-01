@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework.data</groupId>
 	<artifactId>spring-data-solr</artifactId>
-	<version>4.4.0-finn4</version>
+	<version>4.4.0-finn5</version>
 
 	<name>Spring Data Solr</name>
 	<description>Spring Data module providing support for Apache Solr repositories.</description>
@@ -18,13 +18,13 @@
 	</parent>
 
 	<properties>
-		<commons.collections>3.2.1</commons.collections>
-		<commons.lang>3.1</commons.lang>
-		<httpcomponents>4.3.1</httpcomponents>
-		<solr>9.5.0</solr>
-		<springdata.commons>2.5.8</springdata.commons> <!-- 2.5.9+ throws ClassNotFoundException: javax.sql.DataSource in the org.springframework.data.solr.repository tests -->
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-lang.version>3.1</commons-lang.version>
+		<httpcomponents.version>4.3.1</httpcomponents.version>
+		<solr.version>9.5.0</solr.version>
+		<springdata-commons.version>2.7.18</springdata-commons.version> <!-- 2.5.9+ throws ClassNotFoundException: javax.sql.DataSource in the org.springframework.data.solr.repository tests -->
 		<java-module-name>spring.data.solr</java-module-name>
-		<jackson.version>2.15.3</jackson.version>
+		<jackson.version>2.16.1</jackson.version>
 	</properties>
 
 	<developers>
@@ -82,14 +82,14 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>${springdata.commons}</version>
+			<version>${springdata-commons.version}</version>
 		</dependency>
 
 		<!-- APACHE -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang}</version>
+			<version>${commons-lang.version}</version>
 		</dependency>
 
 		<!-- JODA Time -->
@@ -104,7 +104,7 @@
 		<dependency>
 			<artifactId>solr-solrj</artifactId>
 			<groupId>org.apache.solr</groupId>
-			<version>${solr}</version>
+			<version>${solr.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -131,7 +131,7 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-core</artifactId>
-			<version>${solr}</version>
+			<version>${solr.version}</version>
 			<optional>true</optional>
 			<exclusions>
 				<exclusion>
@@ -146,24 +146,12 @@
 					<artifactId>jdk.tools</artifactId>
 					<groupId>jdk.tools</groupId>
 				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.core</groupId>
-					<artifactId>jackson-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.dataformat</groupId>
-					<artifactId>jackson-dataformat-cbor</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.dataformat</groupId>
-					<artifactId>jackson-dataformat-smile</artifactId>
-				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-langid</artifactId>
-			<version>${solr}</version>
+			<version>${solr.version}</version>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
@@ -175,7 +163,7 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-scripting</artifactId>
-			<version>${solr}</version>
+			<version>${solr.version}</version>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
@@ -239,7 +227,17 @@
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
