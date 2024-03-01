@@ -22,7 +22,7 @@
 		<commons-lang.version>3.1</commons-lang.version>
 		<httpcomponents.version>4.3.1</httpcomponents.version>
 		<solr.version>9.5.0</solr.version>
-		<springdata-commons.version>2.7.18</springdata-commons.version> <!-- 2.5.9+ throws ClassNotFoundException: javax.sql.DataSource in the org.springframework.data.solr.repository tests -->
+		<springdata-commons.version>2.7.18</springdata-commons.version>
 		<java-module-name>spring.data.solr</java-module-name>
 		<jackson.version>2.16.1</jackson.version>
 	</properties>
